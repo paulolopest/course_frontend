@@ -1,0 +1,109 @@
+.lgn-page {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   background-color: rgb(18, 18, 20);
+   color: white;
+}
+
+.lgn-pg-ctr {
+   display: flex;
+   align-items: center;
+   gap: 0 2rem;
+   transition: 0.2s ease-in-out;
+
+   h1 {
+      line-height: 1.2;
+      width: 28rem;
+      font-size: 4rem;
+   }
+}
+
+.lgn-pg-box {
+   display: flex;
+   flex-direction: column;
+   border-radius: 10px;
+   background-color: rgb(32, 32, 36);
+   padding: 4rem;
+   width: 30rem;
+   gap: 1rem 0;
+
+   .lgn-pg-box-ipt {
+      display: flex;
+      flex-direction: column;
+
+      .lgn-inpt-ctr {
+         display: flex;
+         flex-direction: column;
+         gap: 1rem 0;
+      }
+
+      span {
+         font-size: 0.8rem;
+         color: rgb(130, 52, 233);
+         cursor: pointer;
+      }
+   }
+
+   .lgn-pgn-btn {
+      height: 3rem;
+      background-color: rgb(130, 52, 233);
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      outline: none;
+      border: none;
+      border-radius: 5px;
+      margin-top: 1rem;
+   }
+
+   p {
+      align-self: center;
+      padding: 0.5rem 0;
+      font-size: 0.9rem;
+
+      span {
+         color: rgb(130, 52, 233);
+      }
+   }
+
+   .lgn-pg-fakeLine {
+      width: 100%;
+      height: 1px;
+      background-color: #7b7b7b;
+      position: relative;
+
+      span {
+         padding: 0.05rem 2rem;
+         background-color: blue;
+         position: absolute;
+         right: 50%;
+         transform: translateX(50%);
+         background-color: rgb(32, 32, 36);
+      }
+   }
+
+   .lgn-pg-gthb {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 0;
+      align-items: center;
+      color: #e1e1e1;
+
+      button {
+         display: flex;
+         background-color: rgb(41, 41, 46);
+         align-items: center;
+         border: none;
+         outline: none;
+         border-radius: 3px;
+         padding: 0 1.5rem;
+         gap: 0 1rem;
+         color: white;
+         font-size: 1rem;
+         font-weight: 600;
+      }
+   }
+}

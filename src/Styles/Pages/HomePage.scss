@@ -1,0 +1,18 @@
+.homePg {
+   display: flex;
+   justify-content: center;
+   min-height: calc(100vh - 4rem);
+   background-color: rgb(18, 18, 20);
+   color: white;
+   width: 100%;
+}
+
+.home-ctr {
+   width: 80%;
+}
+
+@media (max-width: 1600px) {
+   .home-ctr {
+      width: 90%;
+   }
+}

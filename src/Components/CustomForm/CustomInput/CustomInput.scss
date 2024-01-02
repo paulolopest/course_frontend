@@ -1,0 +1,77 @@
+.customInput {
+   display: flex;
+   flex-direction: column;
+   gap: 0.5rem 0;
+
+   div {
+      height: 3rem;
+      position: relative;
+
+      input {
+         width: 100%;
+         height: 100%;
+         padding-left: 1rem;
+         border-radius: 5px;
+         transition: 0.2s ease-in-out;
+         border: 1px solid transparent;
+         outline: none;
+         background-color: rgb(18, 18, 20);
+         color: white;
+
+         &:active ~ label {
+            top: -2%;
+            color: rgb(130, 52, 233);
+            background: linear-gradient(to bottom, rgb(32, 32, 36) 50%, rgb(18, 18, 20) 100%);
+         }
+
+         &:focus ~ label {
+            top: -2%;
+            color: rgb(130, 52, 233);
+            background: linear-gradient(to bottom, rgb(32, 32, 36) 50%, rgb(18, 18, 20) 100%);
+         }
+
+         &:active {
+            border: 1px solid rgb(130, 52, 233);
+         }
+         &:focus {
+            border: 1px solid rgb(130, 52, 233);
+         }
+         &:hover {
+            border: 1px solid rgb(130, 52, 233);
+         }
+      }
+
+      label {
+         position: absolute;
+         top: 50%;
+         transform: translateY(-50%);
+         left: 0.5rem;
+         z-index: 1;
+         padding: 0.3rem;
+         background-color: transparent;
+         transition: 0.2s ease-in-out;
+         color: #a1a1a1;
+         border-radius: 5px;
+         user-select: none;
+         font-size: 0.8rem;
+      }
+
+      &:hover {
+         label {
+            top: -2%;
+            color: rgb(130, 52, 233);
+            background: linear-gradient(to bottom, rgb(32, 32, 36) 50%, rgb(18, 18, 20) 100%);
+         }
+      }
+   }
+
+   span {
+      font-size: 0.8rem;
+      color: #f54242;
+   }
+}
+
+#labelToTop {
+   top: -2%;
+   color: rgb(130, 52, 233);
+}
