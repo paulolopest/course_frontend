@@ -6,8 +6,7 @@ export const GlobalContext = React.createContext("");
 const GlobalStorage = ({ children }) => {
    const [addPfsModal, setAddPfsModal] = React.useState(false);
    const [rmvPfsModal, setRmvPfsModal] = React.useState(false);
-
-   console.log(addPfsModal);
+   const [addCourseModal, setAddCourseModal] = React.useState(false);
 
    const mediumScreen = useMedia("(max-width: 1050px)");
    const smallScreen = useMedia("(max-width: 800px)");
@@ -20,6 +19,8 @@ const GlobalStorage = ({ children }) => {
             setAddPfsModal,
             rmvPfsModal,
             setRmvPfsModal,
+            addCourseModal,
+            setAddCourseModal,
             mediumScreen,
             smallScreen,
             mobileScreen,

@@ -1,6 +1,7 @@
 import React from "react";
 import "./NavBar.scss";
 import * as Icon from "@phosphor-icons/react";
+import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
    return (
@@ -9,18 +10,18 @@ const NavBar = () => {
             <Icon.MetaLogo />
          </div>
 
-         <div>
+         <Link to={"dashboard"}>
             <Icon.ChartBar />
             <p>Dashboard</p>
-         </div>
-         <div>
+         </Link>
+         <Link to={"cursos"}>
             <Icon.GraduationCap />
             <p>Cursos</p>
-         </div>
-         <div>
+         </Link>
+         <Link to={"professores"}>
             <Icon.Users />
             <p>Professores</p>
-         </div>
+         </Link>
       </div>
    );
 };

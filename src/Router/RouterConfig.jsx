@@ -11,7 +11,7 @@ const RouterConfig = () => {
          <IndexStorage>
             <ModalIndex />
             <Routes>
-               <Route path="/home/*" element={<Home />} />
+               <Route path="/*" element={<Home />} />
                <Route path="/login" element={<LoginPage />} />
             </Routes>
          </IndexStorage>

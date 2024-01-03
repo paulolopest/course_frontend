@@ -8,6 +8,12 @@ export class UserRequest {
 		};
 	};
 
+	USER_SIGNUP = () => {
+		return {
+			url: `${BASE_URL}/signup`,
+		};
+	};
+
     GET_PROFILE = () => {
 		return {
 			url: `${BASE_URL}/profile`,

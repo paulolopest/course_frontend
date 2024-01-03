@@ -7,13 +7,14 @@ import { UserContext } from "../Context/AccountContext";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+   const [signupCtr, setSignupCtr] = React.useState(false);
    const { error, loading, userLogin, userRegister, login } = React.useContext(UserContext);
 
    const navigate = useNavigate();
 
    useEffect(() => {
       if (login) {
-         navigate("/home");
+         navigate("/dashboard");
       }
    }, [login]);
 
@@ -24,8 +25,12 @@ const LoginPage = () => {
       formState: { errors },
    } = useForm();
 
-   const handleSend = async (data) => {
+   const handleLogin = async (data) => {
       await userLogin(data.email, data.password);
+   };
+
+   const handleRegister = async (data) => {
+      await userRegister(data.email, data.password, data.name, data.lastname);
    };
 
    if (loading) return <p>Loading...</p>;
@@ -35,57 +40,138 @@ const LoginPage = () => {
          <div className="lgn-pg-ctr animeDown">
             <h1>Faça seu login na plataforma</h1>
 
-            <div className="lgn-pg-box">
-               <div className="lgn-pg-box-ipt">
-                  <div className="lgn-inpt-ctr">
-                     <CustomInput
-                        register={register}
-                        name="email"
-                        type="email"
-                        required={"Preencha esse campo"}
-                        errors={errors.credential?.message}
-                        placeholder={"E-mail"}
-                        pattern={{
-                           value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                           message: "Email inválido",
-                        }}
-                        watch={watch("credential")}
-                     />
+            {!signupCtr ? (
+               <>
+                  <div className="lgn-pg-box">
+                     <div className="lgn-pg-box-ipt">
+                        <div className="lgn-inpt-ctr">
+                           <CustomInput
+                              register={register}
+                              name="email"
+                              type="email"
+                              required={"Preencha esse campo"}
+                              errors={errors.credential?.message}
+                              placeholder={"E-mail"}
+                              pattern={{
+                                 value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                                 message: "Email inválido",
+                              }}
+                              defaultValue={"paulo@gmail.com"}
+                              watch={watch("credential")}
+                           />
 
-                     <CustomInput
-                        register={register}
-                        name="password"
-                        type="password"
-                        required={"Preencha esse campo"}
-                        errors={errors.credential?.message}
-                        placeholder={"Senha"}
-                        watch={watch("password")}
-                     />
+                           <CustomInput
+                              register={register}
+                              name="password"
+                              type="password"
+                              required={"Preencha esse campo"}
+                              errors={errors.credential?.message}
+                              placeholder={"Senha"}
+                              watch={watch("password")}
+                              defaultValue={"paulo12345"}
+                           />
+                        </div>
+
+                        <span>Esqueci minha senha</span>
+                     </div>
+
+                     <button onClick={handleSubmit(handleLogin)} className="lgn-pgn-btn">
+                        Entrar
+                     </button>
+
+                     <p>
+                        Não tem uma conta?{" "}
+                        <span onClick={() => setSignupCtr(true)}>Registre-se</span>
+                     </p>
+
+                     <div className="lgn-pg-fakeLine">
+                        <span />
+                     </div>
+
+                     <div className="lgn-pg-gthb">
+                        <span>Ou entre com</span>
+                        <button>
+                           <Icon.GithubLogo />
+                           <p>Github</p>
+                        </button>
+                     </div>
                   </div>
+               </>
+            ) : (
+               <>
+                  <div className="lgn-pg-box">
+                     <div className="lgn-pg-box-ipt">
+                        <div className="lgn-inpt-ctr">
+                           <div className="lgn-inpt-ctr-sgn">
+                              <CustomInput
+                                 register={register}
+                                 name="name"
+                                 type="name"
+                                 required={"Preencha esse campo"}
+                                 errors={errors.credential?.message}
+                                 placeholder={"Nome"}
+                                 watch={watch("name")}
+                              />
 
-                  <span>Esqueci minha senha</span>
-               </div>
+                              <CustomInput
+                                 register={register}
+                                 name="lastname"
+                                 type="lastname"
+                                 required={"Preencha esse campo"}
+                                 errors={errors.credential?.message}
+                                 placeholder={"Sobrenome"}
+                                 watch={watch("lastname")}
+                              />
+                           </div>
 
-               <button onClick={handleSubmit(handleSend)} className="lgn-pgn-btn">
-                  Entrar
-               </button>
+                           <CustomInput
+                              register={register}
+                              name="email"
+                              type="email"
+                              required={"Preencha esse campo"}
+                              errors={errors.credential?.message}
+                              placeholder={"E-mail"}
+                              pattern={{
+                                 value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                                 message: "Email inválido",
+                              }}
+                              watch={watch("credential")}
+                           />
 
-               <p>
-                  Não tem uma conta? <span>Registre-se</span>
-               </p>
+                           <CustomInput
+                              register={register}
+                              name="password"
+                              type="password"
+                              required={"Preencha esse campo"}
+                              errors={errors.credential?.message}
+                              placeholder={"Senha"}
+                              watch={watch("password")}
+                           />
+                        </div>
+                     </div>
 
-               <div className="lgn-pg-fakeLine">
-                  <span />
-               </div>
+                     <button onClick={handleSubmit(handleRegister)} className="lgn-pgn-btn">
+                        Cadastrar
+                     </button>
 
-               <div className="lgn-pg-gthb">
-                  <span>Ou entre com</span>
-                  <button>
-                     <Icon.GithubLogo />
-                     <p>Github</p>
-                  </button>
-               </div>
-            </div>
+                     <p>
+                        Ja tem uma conta? <span onClick={() => setSignupCtr(false)}>Entre</span>
+                     </p>
+
+                     <div className="lgn-pg-fakeLine">
+                        <span />
+                     </div>
+
+                     <div className="lgn-pg-gthb">
+                        <span>Ou entre com</span>
+                        <button>
+                           <Icon.GithubLogo />
+                           <p>Github</p>
+                        </button>
+                     </div>
+                  </div>
+               </>
+            )}
          </div>
       </div>
    );

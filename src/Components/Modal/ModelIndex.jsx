@@ -3,10 +3,17 @@ import { GlobalContext } from "../../Context/GlobalContext";
 import useUtils from "../../Hooks/useUtils";
 import AddPfsModal from "./AddPfsModal/AddPfsModal";
 import RmvPfsModal from "./RmvPfsModal/RmvPfsModal";
+import AddCourseModal from "./AddCourseModal/AddCourseModal";
 
 const ModalIndex = () => {
-   const { addPfsModal, setAddPfsModal, rmvPfsModal, setRmvPfsModal } =
-      React.useContext(GlobalContext);
+   const {
+      addPfsModal,
+      setAddPfsModal,
+      rmvPfsModal,
+      setRmvPfsModal,
+      addCourseModal,
+      setAddCourseModal,
+   } = React.useContext(GlobalContext);
 
    const { useFreezeScreen, useCloseEsc } = useUtils();
 
@@ -20,6 +27,7 @@ const ModalIndex = () => {
       <>
          {addPfsModal && <AddPfsModal />}
          {rmvPfsModal && <RmvPfsModal />}
+         {addCourseModal && <AddCourseModal />}
       </>
    );
 };

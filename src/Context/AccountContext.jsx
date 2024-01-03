@@ -22,7 +22,7 @@ const UserStorage = ({ children }) => {
       setLoading(false);
 
       window.localStorage.removeItem("token");
-      window.location.reload();
+      navigate("/login");
       setLogin(false);
    };
 
@@ -78,7 +78,7 @@ const UserStorage = ({ children }) => {
 
          await getProfile();
          setLogin(true);
-         navigate("/");
+         navigate("/dashboard");
       } catch (err) {
          setData(null);
          setError(err.response.data);
@@ -109,6 +109,7 @@ const UserStorage = ({ children }) => {
    }, []);
 
    React.useEffect(() => {
+      if (!login) navigate("/login");
       const autoLogin = async () => {
          if (token) {
             try {
@@ -120,6 +121,7 @@ const UserStorage = ({ children }) => {
 
                if (res.status !== 200) throw new Error("Invalid credentials");
 
+               getProfile();
                setLogin(true);
             } catch (err) {
                userLogout();

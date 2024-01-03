@@ -12,6 +12,7 @@ const CustomInput = ({
    errors,
    watch,
    autoFocus,
+   defaultValue,
 }) => {
    return (
       <div className="customInput">
@@ -20,6 +21,7 @@ const CustomInput = ({
                type={type}
                {...register(name, { required, pattern, minLength })}
                autoFocus={autoFocus}
+               defaultValue={defaultValue}
             />
             <label id={watch && watch.length !== 0 && "labelToTop"}>{placeholder}</label>
          </div>

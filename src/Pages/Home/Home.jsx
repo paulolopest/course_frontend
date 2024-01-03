@@ -12,7 +12,11 @@ const Home = () => {
          <CustomSkeleton>
             <div className="homePg">
                <div className="home-ctr">
-                  <Professor />
+                  <Routes>
+                     <Route path="/dashboard" element={<Dashboard />} />
+                     <Route path="/cursos" element={<Courses />} />
+                     <Route path="/professores" element={<Professor />} />
+                  </Routes>
                </div>
             </div>
          </CustomSkeleton>

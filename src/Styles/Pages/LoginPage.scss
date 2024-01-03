@@ -37,6 +37,11 @@
          display: flex;
          flex-direction: column;
          gap: 1rem 0;
+
+         .lgn-inpt-ctr-sgn {
+            display: flex;
+            justify-content: space-between;
+         }
       }
 
       span {
@@ -65,6 +70,7 @@
       font-size: 0.9rem;
 
       span {
+         cursor: pointer;
          color: rgb(130, 52, 233);
       }
    }
