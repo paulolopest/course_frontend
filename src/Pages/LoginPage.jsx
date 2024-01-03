@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./../Styles/Pages/LoginPage.scss";
 import CustomInput from "../Components/CustomForm/CustomInput/CustomInput";
 import { useForm } from "react-hook-form";
 import * as Icon from "@phosphor-icons/react";
+import { UserContext } from "../Context/AccountContext";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-   // const { error, loading, userLogin, userRegister } = React.useContext(UserContext);
+   const { error, loading, userLogin, userRegister, login } = React.useContext(UserContext);
 
    const navigate = useNavigate();
+
+   useEffect(() => {
+      if (login) {
+         navigate("/home");
+      }
+   }, [login]);
 
    const {
       register,
@@ -17,9 +24,11 @@ const LoginPage = () => {
       formState: { errors },
    } = useForm();
 
-   const handleClick = () => {
-      navigate("/");
+   const handleSend = async (data) => {
+      await userLogin(data.email, data.password);
    };
+
+   if (loading) return <p>Loading...</p>;
 
    return (
       <div className="lgn-page">
@@ -31,7 +40,7 @@ const LoginPage = () => {
                   <div className="lgn-inpt-ctr">
                      <CustomInput
                         register={register}
-                        name="credential"
+                        name="email"
                         type="email"
                         required={"Preencha esse campo"}
                         errors={errors.credential?.message}
@@ -57,7 +66,7 @@ const LoginPage = () => {
                   <span>Esqueci minha senha</span>
                </div>
 
-               <button onClick={handleClick} className="lgn-pgn-btn">
+               <button onClick={handleSubmit(handleSend)} className="lgn-pgn-btn">
                   Entrar
                </button>
 
