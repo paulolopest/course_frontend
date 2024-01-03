@@ -1,0 +1,56 @@
+.rmv-pfs-mdl-ctr {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   height: 100vh;
+   position: fixed;
+   background-color: rgba(0, 0, 0, 0.452);
+   z-index: 10;
+   bottom: 0;
+}
+
+.rmv-pfs-mdl {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 2rem 0;
+   color: white;
+   padding: 1.5rem;
+   border-radius: 5px;
+   background-color: rgb(33, 31, 31);
+   width: 25rem;
+
+   div {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      :first-child {
+         background-color: rgb(67, 67, 67);
+
+         &:hover {
+            background-color: rgb(117, 116, 116);
+         }
+      }
+
+      :last-child {
+         background-color: rgb(194, 36, 36);
+
+         &:hover {
+            background-color: rgb(186, 49, 49);
+         }
+      }
+
+      button {
+         outline: none;
+         font-weight: 600;
+         font-size: 1rem;
+         border: none;
+         color: white;
+         padding: 0.5rem 3rem;
+         border-radius: 5px;
+         transition: 0.1s ease-in-out;
+      }
+   }
+}

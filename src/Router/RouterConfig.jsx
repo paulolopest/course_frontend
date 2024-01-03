@@ -2,17 +2,19 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginPage from "../Pages/LoginPage";
 import Home from "../Pages/Home/Home";
-import UserStorage from "../Context/AccountContext";
+import IndexStorage from "../Context/IndexContext";
+import ModalIndex from "../Components/Modal/ModelIndex";
 
 const RouterConfig = () => {
    return (
       <BrowserRouter>
-         <UserStorage>
+         <IndexStorage>
+            <ModalIndex />
             <Routes>
                <Route path="/home/*" element={<Home />} />
                <Route path="/login" element={<LoginPage />} />
             </Routes>
-         </UserStorage>
+         </IndexStorage>
       </BrowserRouter>
    );
 };

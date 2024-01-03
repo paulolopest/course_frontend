@@ -16,4 +16,13 @@ export class ProfessorRequest {
             },
 		};
 	};
+
+	DELETE_PROFESSOR = (id) => {
+		return {
+			url: `${BASE_URL}/professor/delete/${id}`,
+            headers: {
+                Authorization: token,
+            },
+		};
+	};
 }

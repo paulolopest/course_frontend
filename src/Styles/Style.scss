@@ -50,3 +50,22 @@
       opacity: 1;
    }
 }
+
+.animeFadeIn {
+   animation: animeFadeIn 0.2s forwards;
+   transition: 0.2s ease-in-out;
+   opacity: 0;
+   scale: 0;
+}
+@keyframes animeFadeIn {
+   to {
+      transform: initial;
+      opacity: 0.5;
+      scale: 0.5;
+   }
+
+   to {
+      opacity: 1;
+      scale: 1;
+   }
+}
